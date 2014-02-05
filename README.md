@@ -24,6 +24,7 @@ generator-express-jade-less
   - NAME
   - DESCRIPTION
 - Run `sudo /setup-dev.sh` or `sudo ./setup-prod.sh` as appropriate.
+  - *Note:* Installs global as well as local Node packages, and Bower dependencies.
 
 ### Server commands
 
@@ -34,8 +35,8 @@ generator-express-jade-less
 
 > `gulp default` executes the `build` task.
 
-- All - `gulp all` - test and build
-- Run tests - `gulp test` - lint, mocha and phantomjs
-- Watch files - `gulp watch` - watch for jade, less and coffeescript
-- Build files - `gulp build` - build jade, less and coffeescript
-- Release - `gulp release` - test, build, bump versions and git tag
+- `gulp all` - Run tests and Build.
+- `gulp test` - Run tests - lint, mocha and phantomjs.
+- `gulp watch` - Watch for jade, less and coffeescript file changes and re-build on the fly.
+- `gulp build` - Re-build jade, less and coffeescript files.
+- `gulp release` - Test, build, bump versions and git tag
