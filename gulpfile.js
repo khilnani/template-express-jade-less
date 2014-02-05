@@ -53,15 +53,15 @@ gulp.task('test', ['lint', 'mocha', 'phantomjs'], function () {
 
 //-------------------------------------------------------
 
-gulp.task('jade', function () {
-  gulp.src(['./views/templates/*.jade'])
+gulp.task('jade-templates', function () {
+  gulp.src(['./public/templates/*.jade'])
     .pipe(jade())
 //    .pipe(debug({verbose: true}))
     .pipe(rename(function (dir, base, ext) {
       return base + '.handlebars';
     }))
 //    .pipe(debug({verbose: true}))
-    .pipe(gulp.dest('./views/templates'));
+    .pipe(gulp.dest('./public/templates'));
 });
 
 gulp.task('coffee', function () {
@@ -78,15 +78,15 @@ gulp.task('less', function () {
     .pipe(gulp.dest('./public/css'));
 });
 
-gulp.task('templates', ['jade'], function () {
-  gulp.src(['./views/templates/*.handlebars'])
-    .pipe(exec('handlebars ./views/templates/*.handlebars -f ./public/js/templates.js'));
+gulp.task('templates', ['jade-templates'], function () {
+  gulp.src(['./public/templates/*.handlebars'])
+    .pipe(exec('handlebars ./public/templates/*.handlebars -f ./public/js/templates.js'));
 });
 
 //-------------------------------------------------------
 
 gulp.task('watch', ['templates', 'coffee', 'less'], function () {
-  gulp.watch('./views/templates/*.jade', ['templates']);
+  gulp.watch('./public/templates/*.jade', ['templates']);
   gulp.watch('./public/js/*.coffee', ['coffee']);
   gulp.watch('./public/css/*.less', ['less']);
 });

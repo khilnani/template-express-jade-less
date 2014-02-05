@@ -7,13 +7,21 @@ var express = require('express');
 var routes = require('./routes');
 var http = require('http');
 var path = require('path');
-
+var less = require('less-middleware');
+var hb = require('express3-handlebars');
 var app = express();
 
 // all environments
 app.set('port', process.env.PORT || 8080);
+
+app.use(less({ src: path.join(__dirname, 'public') }));
+
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+//app.set('view engine', 'jade');
+
+var hbs = hb.create({});
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
 app.use(express.favicon());
 app.use(express.logger('dev'));
@@ -21,7 +29,6 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
-app.use(require('less-middleware')({ src: path.join(__dirname, 'public') }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/libs', express.static(__dirname + '/bower_components'));
