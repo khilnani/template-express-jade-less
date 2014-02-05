@@ -24,7 +24,8 @@ generator-express-jade-less
   - NAME
   - DESCRIPTION
 - Run `sudo /setup-dev.sh` or `sudo ./setup-prod.sh` as appropriate.
-  - *Note:* Installs global as well as local Node packages, and Bower dependencies.
+
+> Installs global as well as local Node packages, and Bower dependencies.
 
 ### Environment Configuration
 
