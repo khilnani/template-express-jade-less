@@ -26,10 +26,19 @@ generator-express-jade-less
 - Run `sudo /setup-dev.sh` or `sudo ./setup-prod.sh` as appropriate.
   - *Note:* Installs global as well as local Node packages, and Bower dependencies.
 
+### Environment Configuration
+
+- `NODE_ENV` - 'development' or 'production'. 
+- `process.env.PORT` - Default port is 8080.
+
 ### Server commands
 
-- Run `npm start` or `./start.sh` to Start.
-- Run `npm stop` or `./stop.sh` to Stop.
+- Development
+  - `./NAME.js` or `node NAME.js`
+- Production
+  - Run `npm start` or `./start.sh` to Start.
+  - Run `npm stop` or `./stop.sh` to Stop.
+
 
 ### Tasks
 
