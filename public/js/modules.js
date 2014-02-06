@@ -33,16 +33,12 @@ exports.alert = function(msg) {
 module.exports=require('s23DI6');
 },{}],3:[function(require,module,exports){
 exports.test = function() {
-  console.log("test");
-  return "test";
-};
-
-},{}],"ba2Xsz":[function(require,module,exports){
-exports.test = function() {
   console.log("util: test");
   return "test";
 };
 
+},{}],"ba2Xsz":[function(require,module,exports){
+module.exports=require(3)
 },{}],"util":[function(require,module,exports){
 module.exports=require('ba2Xsz');
 },{}]},{},[3])

@@ -30,7 +30,7 @@
     "regexp": false,
     "undef": true,
     "unused": "vars",
-    "quotmark": "single",
+    "quotmark": false,
     "strict": false,
     "trailing": true,
     "camelcase": true,
@@ -61,5 +61,5 @@
     "validthis": false,
 
     "nomen": false,
-    "white": true
+    "white": false
 }

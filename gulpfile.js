@@ -29,7 +29,7 @@ var onError = map(function (file, cb) {
 //-------------------------------------------------------
 
 gulp.task('lint', function () {
-  gulp.src(['./**/*.js', '!./node_modules/**', '!./bower_components/**', '!./public/js/templates.js'])
+  gulp.src(['./**/*.js', '!./node_modules/**', '!./bower_components/**', '!./public/js/templates.js', '!./public/js/modules.js'])
     .pipe(jshint('./.jshintrc'))
     .pipe(jshint.reporter(stylish))
     .pipe(onError);
