@@ -1,7 +1,4 @@
-exports.alert = function(msg) {
-  if (msg == null) {
-    msg = 'Noooo';
-  }
-  console.log("" + msg + " !!!!!!");
-  return alert("" + msg + " !!!!!!!");
+exports.test = function() {
+  console.log("util: test");
+  return "test";
 };

@@ -70,12 +70,13 @@ gulp.task('coffee', function () {
 
 gulp.task('browserify', ['coffee'], function () {
   gulp.src(['./public/js/modules/**/*.js'])
-    .pipe(browserify({
-        insertGlobals: false,
-        require: ['expose']
-      }))
-      .pipe(concat('modules.js'))
-      .pipe(gulp.dest('./public/js/'));
+    .pipe(browserify({insertGlobals: false}))
+    .on('prebundle', function (bundler) {
+      bundler.require(__dirname + '/public/js/modules/core.js', {expose: 'core'});
+      bundler.require(__dirname + '/public/js/modules/util.js', {expose: 'util'});
+    })
+    .pipe(concat('modules.js'))
+    .pipe(gulp.dest('./public/js/'));
 });
 
 gulp.task('less', function () {

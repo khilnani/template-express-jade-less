@@ -1,4 +1,4 @@
 
 exports.alert = (msg = 'Noooo') ->
-  console.log "#{msg} !!!!!!"
-  alert "#{msg} !!!!!!!"
+  console.log "core: #{msg} !!!!!!"
+  alert "core: #{msg} !!!!!!!"

@@ -1,4 +1,4 @@
 
-exports.alert = (msg = 'Noooo') ->
-  console.log "#{msg} !!!!!!"
-  alert "#{msg} !!!!!!!"
+exports.test = () ->
+  console.log "util: test"
+  "test"
