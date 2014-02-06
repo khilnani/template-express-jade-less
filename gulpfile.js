@@ -8,13 +8,14 @@ var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish');
 var mocha = require('gulp-mocha');
 //var handlebars = require('gulp-handlebars');
-//var concat = require('gulp-concat');
+var concat = require('gulp-concat');
 //var declare = require('gulp-declare');
 var rename = require('gulp-rename');
 var map = require('map-stream');
 //var debug = require('gulp-debug');
 var bump = require('gulp-bump');
 var git = require('gulp-git');
+var browserify = require('gulp-browserify');
 
 //-------------------------------------------------------
 
@@ -41,10 +42,9 @@ gulp.task('mocha', function () {
     .pipe(mocha({reporter: 'spec'}));
 });
 
-gulp.task('phantomjs', function (cb) {
+gulp.task('phantomjs', function () {
   gulp.src('.')
     .pipe(exec('phantomjs ./test/phantom.js', {silent: false}));
-  cb();
 });
 
 gulp.task('test', ['lint', 'mocha', 'phantomjs'], function () {
@@ -56,18 +56,26 @@ gulp.task('test', ['lint', 'mocha', 'phantomjs'], function () {
 gulp.task('jade-templates', function () {
   gulp.src(['./public/templates/*.jade'])
     .pipe(jade())
-//    .pipe(debug({verbose: true}))
     .pipe(rename(function (dir, base, ext) {
       return base + '.handlebars';
     }))
-//    .pipe(debug({verbose: true}))
     .pipe(gulp.dest('./public/templates'));
 });
 
 gulp.task('coffee', function () {
-  gulp.src(['./public/js/*.coffee'])
+  gulp.src(['./public/js/**/*.coffee'])
     .pipe(coffee({bare: true}).on('error', gutil.log))
     .pipe(gulp.dest('./public/js/'));
+});
+
+gulp.task('browserify', ['coffee'], function () {
+  gulp.src(['./public/js/modules/**/*.js'])
+    .pipe(browserify({
+        insertGlobals: false,
+        require: ['expose']
+      }))
+      .pipe(concat('modules.js'))
+      .pipe(gulp.dest('./public/js/'));
 });
 
 gulp.task('less', function () {
@@ -85,13 +93,13 @@ gulp.task('templates', ['jade-templates'], function () {
 
 //-------------------------------------------------------
 
-gulp.task('watch', ['templates', 'coffee', 'less'], function () {
+gulp.task('watch', ['templates', 'browserify', 'less'], function () {
   gulp.watch('./public/templates/*.jade', ['templates']);
-  gulp.watch('./public/js/*.coffee', ['coffee']);
+  gulp.watch('./public/js/**/*.coffee', ['browserify']);
   gulp.watch('./public/css/*.less', ['less']);
 });
 
-gulp.task('build', ['templates', 'coffee', 'less'], function () {
+gulp.task('build', ['templates', 'browserify', 'less'], function () {
 });
 
 //-------------------------------------------------------
