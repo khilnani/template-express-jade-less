@@ -21,4 +21,4 @@ console.log('app: ' + util.test());
 
 core = require('core');
 
-core.alert('NAME');
+core.alert('Hello');
