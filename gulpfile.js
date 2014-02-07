@@ -11,28 +11,29 @@ var mocha = require('gulp-mocha');
 var concat = require('gulp-concat');
 //var declare = require('gulp-declare');
 var rename = require('gulp-rename');
-var map = require('map-stream');
+//var map = require('map-stream');
 //var debug = require('gulp-debug');
 var bump = require('gulp-bump');
 var git = require('gulp-git');
 var browserify = require('gulp-browserify');
 
 //-------------------------------------------------------
-
+/*
 var onError = map(function (file, cb) {
   if (!file.jshint.success) {
-    console.error('jshint failed');
+    console.error('jshint failed: ' + file.path);
     process.exit(1);
   }
 });
-
+*/
 //-------------------------------------------------------
 
 gulp.task('lint', function () {
   gulp.src(['./**/*.js', '!./node_modules/**', '!./bower_components/**', '!./public/js/templates.js', '!./public/js/modules.js'])
     .pipe(jshint('./.jshintrc'))
     .pipe(jshint.reporter(stylish))
-    .pipe(onError);
+    .pipe(jshint.reporter('fail'));
+//    .pipe(onError);
 });
 
 //-------------------------------------------------------
