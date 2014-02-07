@@ -36,6 +36,14 @@ app.use('/docs', express.static(__dirname + '/docs'));
 
 // development only
 if ('development' === app.get('env')) {
+  app.use(express.errorHandler({
+    dumpExceptions: true,
+    showStack: true
+  }));
+}
+
+// production
+if ('production' === app.get('env')) {
   app.use(express.errorHandler());
 }
 
