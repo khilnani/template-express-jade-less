@@ -3,14 +3,20 @@ exports.alert = function(msg) {
   if (msg == null) {
     msg = 'Noooo';
   }
-  console.log("core: " + msg + " !!!!!!");
-  return alert("core: " + msg + " !!!!!!!");
+  return console.log("core: " + msg + " !!!!!!");
 };
 
 },{}],"core":[function(require,module,exports){
 module.exports=require('U0Nvag');
 },{}],3:[function(require,module,exports){
-module.exports=require("U0Nvag")
+exports.alert = function(msg) {
+  if (msg == null) {
+    msg = 'Noooo';
+  }
+  console.log("core: " + msg + " !!!!!!");
+  return alert("core: " + msg + " !!!!!!!");
+};
+
 },{}],"DYRGLC":[function(require,module,exports){
 exports.test = function() {
   console.log("util: test");
