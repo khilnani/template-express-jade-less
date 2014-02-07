@@ -6,8 +6,9 @@ generator-express-jade-less
 - My lightweight **Node.js** application template
 - Based on **Express.js**
 - Using **Jade** or **Handlebars** for Node.js HTML views
-- And client-side JavaScript templates
-- With **CoffeeScript** support for client JavaScript
+- And client-side JavaScript templates 
+- With **CoffeeScript** support for client JavaScript,
+- JavaScript modules via **Browserify**
 - As well as **LESS** CSS
 - On top of Twitter **Bootstrap** and **JQuery**
 - Wrapped up using the **GulpJS** build system
@@ -15,6 +16,12 @@ generator-express-jade-less
 - **JSHint** to keep my code clean,
 - **Forever** to start and stop the server, saving logs to `./logs`,
 - And **Travis CI** to keep me in check.
+
+### Add On Need
+
+- DB Connectors
+- Session managers
+- Heavy MV** Frameworks
 
 ## Developer Notes
 
