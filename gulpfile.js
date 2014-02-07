@@ -17,6 +17,9 @@ var bump = require('gulp-bump');
 var git = require('gulp-git');
 var browserify = require('gulp-browserify');
 
+var path = require("path");
+var fs = require("fs");
+
 //-------------------------------------------------------
 /*
 var onError = map(function (file, cb) {
@@ -70,11 +73,18 @@ gulp.task('coffee', function () {
 });
 
 gulp.task('browserify', ['coffee'], function () {
-  gulp.src(['./public/js/modules/**/*.js'])
+  var dir = __dirname + '/public/js/modules/';
+  gulp.src( dir + 'core.js')
     .pipe(browserify({insertGlobals: false}))
     .on('prebundle', function (bundler) {
-      bundler.require(__dirname + '/public/js/modules/core.js', {expose: 'core'});
-      bundler.require(__dirname + '/public/js/modules/util.js', {expose: 'util'});
+      var files = fs.readdirSync( dir );
+      for (var i in files) {
+        var name = dir +  files[i];
+        if (fs.statSync(name).isFile() && path.extname(name) === '.js') {
+          var exposeName = path.basename(name, path.extname(path.basename(name)));
+          bundler.require(name, {expose: exposeName});
+        }
+      }
     })
     .pipe(concat('modules.js'))
     .pipe(gulp.dest('./public/js/'));
