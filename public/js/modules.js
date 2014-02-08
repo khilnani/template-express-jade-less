@@ -9,14 +9,7 @@ exports.alert = function(msg) {
 },{}],"core":[function(require,module,exports){
 module.exports=require('U0Nvag');
 },{}],3:[function(require,module,exports){
-exports.alert = function(msg) {
-  if (msg == null) {
-    msg = 'Noooo';
-  }
-  console.log("core: " + msg + " !!!!!!");
-  return alert("core: " + msg + " !!!!!!!");
-};
-
+module.exports=require("U0Nvag")
 },{}],"DYRGLC":[function(require,module,exports){
 exports.test = function() {
   console.log("util: test");
