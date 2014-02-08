@@ -9,13 +9,12 @@ var stylish = require('jshint-stylish');
 var mocha = require('gulp-mocha');
 //var handlebars = require('gulp-handlebars');
 var concat = require('gulp-concat');
-//var declare = require('gulp-declare');
-var rename = require('gulp-rename');
 //var map = require('map-stream');
 //var debug = require('gulp-debug');
 var bump = require('gulp-bump');
 var git = require('gulp-git');
 var browserify = require('gulp-browserify');
+var intercept = require('gulp-intercept');
 
 var path = require("path");
 var fs = require("fs");
@@ -32,7 +31,14 @@ var onError = map(function (file, cb) {
 //-------------------------------------------------------
 
 gulp.task('lint', function () {
-  gulp.src(['./**/*.js', '!./node_modules/**', '!./bower_components/**', '!./public/js/templates.js', '!./public/js/modules.js'])
+  gulp.src([
+      './**/*.js',
+      '!./node_modules/**',
+      '!./bower_components/**',
+      '!./public/js/handlebars.js',
+      '!./public/js/modules.js',
+      '!./public/js/jade.js'
+    ])
     .pipe(jshint('./.jshintrc'))
     .pipe(jshint.reporter(stylish))
     .pipe(jshint.reporter('fail'));
@@ -56,15 +62,6 @@ gulp.task('test', ['lint', 'mocha', 'phantomjs'], function () {
 
 
 //-------------------------------------------------------
-
-gulp.task('jade-templates', function () {
-  gulp.src(['./public/templates/*.jade'])
-    .pipe(jade())
-    .pipe(rename(function (dir, base, ext) {
-      return base + '.handlebars';
-    }))
-    .pipe(gulp.dest('./public/templates'));
-});
 
 gulp.task('coffee', function () {
   gulp.src(['./public/js/**/*.coffee'])
@@ -98,9 +95,24 @@ gulp.task('less', function () {
     .pipe(gulp.dest('./public/css'));
 });
 
+gulp.task('jade-templates', function () {
+  gulp.src(['./public/templates/*.jade'])
+    .pipe(jade({
+      client: true
+    }))
+    .pipe(intercept(function(file){
+      var name =  file.path;
+      var exposeName = path.basename(name, path.extname(path.basename(name)));
+      file.contents = new Buffer( file.contents.toString().replace('function template(', 'function ' + exposeName + '(') );
+      return file;
+    }))
+    .pipe(concat('jade.js'))
+    .pipe(gulp.dest('./public/js'));
+});
+
 gulp.task('templates', ['jade-templates'], function () {
   gulp.src(['./public/templates/*.handlebars'])
-    .pipe(exec('handlebars ./public/templates/*.handlebars -f ./public/js/templates.js'));
+    .pipe(exec('handlebars ./public/templates/*.handlebars -f ./public/js/handlebars.js'));
 });
 
 //-------------------------------------------------------

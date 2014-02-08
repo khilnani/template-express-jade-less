@@ -26,13 +26,13 @@
     "map-stream": "~0.1.0",
     "gulp-mocha": "~0.4.1",
     "gulp-handlebars": "~1.0.1",
-    "gulp-declare": "0.0.1",
     "gulp-concat": "~2.1.7",
     "gulp-debug": "~0.2.0",
-    "gulp-rename": "~0.2.2",
     "gulp-bump": "~0.1.4",
     "gulp-git": "~0.3.0",
-    "gulp-browserify": "~0.4.2"
+    "gulp-browserify": "~0.4.2",
+    "event-stream": "~3.1.0",
+    "gulp-intercept": "~0.1.0"
   },
   "engine": {
     "node": "0.10.x"

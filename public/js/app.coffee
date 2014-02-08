@@ -1,12 +1,19 @@
 ###global Handlebars ###
+###global mainJade ###
 
 console.log 'NAME'
 
 console.log 'Reading main template'
-t = Handlebars.templates['main']
+mainHbr = Handlebars.templates['mainHbr']
 
-console.log 'Replacing html for #main'
-$('#main').html t({name: 'NAME', description: 'DESCRIPTION'})
+data = {name: 'NAME', description: 'DESCRIPTION'}
+
+console.log 'Replacing html for #mainHbr'
+$('#mainHbr').html mainHbr(data)
+
+
+console.log 'Replacing #mainJade with jade main template'
+$('#mainJade').html mainJade(data)
 
 util= require 'util'
 console.log 'app: ' + util.test()

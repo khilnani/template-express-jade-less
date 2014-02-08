@@ -1,19 +1,27 @@
 
 /*global Handlebars */
-var core, t, util;
+
+/*global mainJade */
+var core, data, mainHbr, util;
 
 console.log('NAME');
 
 console.log('Reading main template');
 
-t = Handlebars.templates['main'];
+mainHbr = Handlebars.templates['mainHbr'];
 
-console.log('Replacing html for #main');
-
-$('#main').html(t({
+data = {
   name: 'NAME',
   description: 'DESCRIPTION'
-}));
+};
+
+console.log('Replacing html for #mainHbr');
+
+$('#mainHbr').html(mainHbr(data));
+
+console.log('Replacing #mainJade with jade main template');
+
+$('#mainJade').html(mainJade(data));
 
 util = require('util');
 

@@ -34,6 +34,7 @@ app.use(app.router);
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/libs', express.static(__dirname + '/bower_components'));
+app.use('/libs/jade', express.static(__dirname + '/node_modules/jade'));
 app.use('/docs', express.static(__dirname + '/docs'));
 
 // development only
