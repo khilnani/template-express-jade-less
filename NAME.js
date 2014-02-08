@@ -17,11 +17,16 @@ app.set('port', process.env.PORT || 8080);
 app.use(less({ src: path.join(__dirname, 'public') }));
 
 app.set('views', path.join(__dirname, 'views'));
-//app.set('view engine', 'jade');
 
+// UN/COMMENT if using jade views
+// app.set('view engine', 'jade');
+// END
+
+// UN/COMMENT if using handlebars views
 var hbs = hb.create({});
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+//END
 
 app.use(express.favicon());
 app.use(express.logger('dev'));
