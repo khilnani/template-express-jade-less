@@ -41,7 +41,7 @@ generator-express-jade-less
 ### Environment Configuration
 
 - `NODE_ENV` - 'development' or 'production'. 
-- `process.env.PORT` - Default port is 8080.
+- Update `config/env.json` as needed.  Default port is 8080.
 
 ### Server commands
 
