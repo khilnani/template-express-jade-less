@@ -6,7 +6,7 @@ generator-express-jade-less
 - My lightweight **Node.js** application template
 - Based on **Express.js**
 - Using **Jade** or **Handlebars** for Node.js HTML views
-- And client-side JavaScript templates 
+- As well as client-side JavaScript templates 
 - With **CoffeeScript** support for client JavaScript,
 - JavaScript modules via **Browserify**
 - As well as **LESS** CSS
