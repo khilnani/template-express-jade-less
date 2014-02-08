@@ -62,4 +62,4 @@ generator-express-jade-less
 - `gulp test` - Run tests - lint, mocha and phantomjs.
 - `gulp watch` - Watch for jade, less and coffeescript file changes and re-build on the fly.
 - `gulp build` - Re-build jade, less and coffeescript files.
-- `gulp release` - Test, build, bump versions and git tag
+- `gulp release` - Test, build, bump versions and git tag.
