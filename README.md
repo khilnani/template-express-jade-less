@@ -17,6 +17,10 @@ generator-express-jade-less
 - **Forever** to start and stop the server, saving logs to `./logs`,
 - And **Travis CI** to keep me in check.
 
+> If you don't like CoffeeScript, use plain JavaScript. 
+> If you dont like Jade, you can use Handlebars HTML for Node Views
+> if you don't like LESS and prefer regular CSS, that's OK too. Just write CSS :)
+
 ### Add On Need
 
 - DB Connectors
