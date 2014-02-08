@@ -48,8 +48,8 @@ generator-express-jade-less
 - Development
   - `./NAME.js` or `node NAME.js`
 - Production
-  - Run `npm start` or `./start.sh` to Start.
-  - Run `npm stop` or `./stop.sh` to Stop.
+  - Run `npm start` to Start.
+  - Run `npm stop` to Stop.
 
     > Logs are written to `./logs`
 

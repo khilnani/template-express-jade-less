@@ -39,8 +39,8 @@
   },
   "scripts": {
     "prestart": "gulp build",
-    "start": "sh start.sh",
+    "start": "NODE_ENV=production forever start -l NAME.log -e logs/error.log -o logs/output.log -a NAME.js",
     "test": "gulp test",
-    "stop": "sh stop.sh"
+    "stop": "forever stop NAME.js"
   }
 }
