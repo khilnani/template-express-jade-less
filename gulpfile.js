@@ -12,6 +12,8 @@ var concat = require('gulp-concat');
 //var map = require('map-stream');
 //var debug = require('gulp-debug');
 var bump = require('gulp-bump');
+var rename = require('gulp-rename');
+var glob = require('glob');
 var git = require('gulp-git');
 var browserify = require('gulp-browserify');
 var intercept = require('gulp-intercept');
@@ -71,19 +73,23 @@ gulp.task('coffee', function () {
 
 gulp.task('browserify', ['coffee'], function () {
   var dir = __dirname + '/public/js/modules/';
+  var requires = glob.sync(dir + '**/*.js').map(function(file) {
+    return [file, {expose: path.basename(file, '.js') }]
+  });
   gulp.src( dir + 'core.js')
-    .pipe(browserify({insertGlobals: false}))
-    .on('prebundle', function (bundler) {
-      var files = fs.readdirSync( dir );
-      for (var i in files) {
-        var name = dir +  files[i];
-        if (fs.statSync(name).isFile() && path.extname(name) === '.js') {
-          var exposeName = path.basename(name, path.extname(path.basename(name)));
-          bundler.require(name, {expose: exposeName});
-        }
-      }
-    })
-    .pipe(concat('modules.js'))
+    .pipe(browserify({insertGlobals: false, require: requires}))
+    .pipe(rename('modules.js'))
+//    .on('prebundle', function (bundler) {
+//      var files = fs.readdirSync( dir );
+//      for (var i in files) {
+//        var name = dir +  files[i];
+//        if (fs.statSync(name).isFile() && path.extname(name) === '.js') {
+//          var exposeName = path.basename(name, path.extname(path.basename(name)));
+//          bundler.require(name, {expose: exposeName});
+//        }
+//      }
+//    })
+//    .pipe(concat('modules.js'))
     .pipe(gulp.dest('./public/js/'));
 });
 
