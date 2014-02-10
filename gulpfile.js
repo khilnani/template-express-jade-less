@@ -19,7 +19,7 @@ var browserify = require('gulp-browserify');
 var intercept = require('gulp-intercept');
 
 var path = require("path");
-var fs = require("fs");
+//var fs = require("fs");
 
 //-------------------------------------------------------
 /*
@@ -74,7 +74,7 @@ gulp.task('coffee', function () {
 gulp.task('browserify', ['coffee'], function () {
   var dir = __dirname + '/public/js/modules/';
   var requires = glob.sync(dir + '**/*.js').map(function(file) {
-    return [file, {expose: path.basename(file, '.js') }]
+    return [file, {expose: path.basename(file, '.js') }];
   });
   gulp.src( dir + 'core.js')
     .pipe(browserify({insertGlobals: false, require: requires}))

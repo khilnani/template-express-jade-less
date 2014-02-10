@@ -8,13 +8,12 @@ var http = require('http');
 var path = require('path');
 var less = require('less-middleware');
 var hb = require('express3-handlebars');
-var mongodb = require('mongodb');
 
 var Db = require('mongodb').Db;
-var Connection = require('mongodb').Connection;
+//var Connection = require('mongodb').Connection;
 var Server = require('mongodb').Server;
-var BSON = require('mongodb').BSON;
-var ObjectID = require('mongodb').ObjectID
+//var BSON = require('mongodb').BSON;
+//var ObjectID = require('mongodb').ObjectID;
 
 var app = express();
 var config = require('./config/env.json')[app.get('env')];

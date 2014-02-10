@@ -33,7 +33,7 @@
     "quotmark": false,
     "strict": false,
     "trailing": true,
-    "camelcase": true,
+    "camelcase": false,
 
     "asi": false,
     "boss": true,
