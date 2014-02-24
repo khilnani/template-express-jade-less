@@ -1,8 +1,7 @@
 {
   "directory": "bower_components",
   "json": "bower.json",
-  "post_install": {
-    "jquery": "bower/postinstall_jquery.js",
-    "bootstrap": "bower/postinstall_bootstrap.js"
+  "scripts": {
+    "postinstall": "echo '%' >> ./logs/bower.log"
   }
 }
