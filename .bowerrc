@@ -1,5 +1,5 @@
 {
-  "directory": "public/libs",
+  "directory": "app/public/libs",
   "json": "bower.json",
   "scripts": {
     "postinstall": "echo '%' >> ./logs/bower.log"
