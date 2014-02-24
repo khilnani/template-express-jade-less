@@ -62,6 +62,7 @@ app.use(express.errorHandler({
 // Routes =================
 
 app.get('/', routes.index);
+app.get('/api/locale', routes.locale);
 
 // Start server =================
 
