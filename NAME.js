@@ -26,15 +26,14 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
 
-app.use(less({ src: path.join(__dirname, 'public') }));
+app.use(less({ src: path.join(__dirname, 'app/public') }));
 app.set('views', path.join(__dirname, 'app/views'));
 var hbs = hb.create({});  // handlebars 
 app.engine('handlebars', hbs.engine); // handlebars 
 app.set('view engine', 'handlebars'); // handlebars 
 //app.set('view engine', 'jade');  // jade
 
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/libs', express.static(__dirname + '/bower_components'));
+app.use(express.static(path.join(__dirname, 'app/public')));
 app.use('/libs/jade', express.static(__dirname + '/node_modules/jade'));
 
 // configuration =================

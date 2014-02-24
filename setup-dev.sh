@@ -21,7 +21,3 @@ npm install -g browserify
 ## Project Specific
  
 npm install
-
-## Client/Web Specific
-
-bower install --allow-root
