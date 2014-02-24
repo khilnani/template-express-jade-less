@@ -46,6 +46,7 @@
   "scripts": {
     "start": "NODE_ENV=production forever start -l NAME.log -e logs/error.log -o logs/output.log -a NAME.js",
     "test": "gulp test",
-    "stop": "forever stop NAME.js"
+    "stop": "forever stop NAME.js",
+    "prerestart": "gulp"
   }
 }
