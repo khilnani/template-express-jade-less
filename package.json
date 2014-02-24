@@ -22,7 +22,7 @@
     "gulp-jade": "~0.4.0",
     "gulp-coffee": "~1.4.1",
     "gulp-less": "~1.2.1",
-    "phantomjs": "~1.9.7-1",
+    "phantomjs": "~1.9.1-0",
     "coffee-script": "~1.7.1",
     "gulp-exec": "~1.0.4",
     "gulp-jshint": "~1.4.x",
