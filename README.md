@@ -40,6 +40,7 @@ generator-express-jade-less
 
 ### Environment Configuration
 
+- Rename `config/env.sample.json` to `config/env.json` and update.
 - `NODE_ENV` - 'development' or 'production'. 
 - Update `config/env.json` as needed.  Default port is 8080.
 
