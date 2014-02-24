@@ -9,9 +9,9 @@ var path = require('path');
 var less = require('less-middleware');
 var hb = require('express3-handlebars');
 
-var Db = require('mongodb').Db;
+//var Db = require('mongodb').Db;
 //var Connection = require('mongodb').Connection;
-var Server = require('mongodb').Server;
+//var Server = require('mongodb').Server;
 //var BSON = require('mongodb').BSON;
 //var ObjectID = require('mongodb').ObjectID;
 
@@ -31,7 +31,7 @@ app.set('views', path.join(__dirname, 'app/views'));
 var hbs = hb.create({});  // handlebars 
 app.engine('handlebars', hbs.engine); // handlebars 
 app.set('view engine', 'handlebars'); // handlebars 
-// app.set('view engine', 'jade');  // jade
+//app.set('view engine', 'jade');  // jade
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/libs', express.static(__dirname + '/bower_components'));
@@ -42,7 +42,7 @@ app.use('/libs/jade', express.static(__dirname + '/node_modules/jade'));
 app.set('port', config.port);
 app.use(express.logger('dev'));
 
-
+/*
 var db = new Db('test', new Server('127.0.0.1', 27017, {auto_reconnect: true}, {w: 1, safe: false}));
 db.open(function(err, db){
   console.log('Connected to mongodb ');
@@ -52,7 +52,7 @@ db.open(function(err, db){
     console.log( items );
   } );
 });
-
+*/
 
 app.use(express.errorHandler({
   dumpExceptions: config.dumpExceptions,

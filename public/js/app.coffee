@@ -1,7 +1,7 @@
 ###global Handlebars ###
 ###global mainJade ###
 
-console.log 'NAME'
+console.log 'app.js'
 
 $ ->
   console.log '$'
@@ -12,14 +12,14 @@ $ ->
     locale = data
     data = {name: locale.global.title, description: locale.global.description}
 
+    console.log 'Replacing #mainJade with jade main template'
+    $('#mainJade').html mainJade(data)
+
     console.log 'Reading main template'
     mainHbr = Handlebars.templates['mainHbr']
 
     console.log 'Replacing html for #mainHbr'
     $('#mainHbr').html mainHbr(data)
-
-    console.log 'Replacing #mainJade with jade main template'
-    $('#mainJade').html mainJade(data)
 
     util= require 'util'
     console.log 'app: ' + util.test()
