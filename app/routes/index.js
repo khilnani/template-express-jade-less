@@ -1,8 +1,5 @@
-
-/*
- * GET home page.
- */
+var locale =  require('./../locale').default();
 
 exports.index = function (req, res) {
-  res.render('index', { name: 'NAME', description: 'DESCRIPTION' });
+  res.render('index', { name: locale.global.title, description: locale.global.description });
 };
