@@ -7,5 +7,5 @@ npm install -g forever
 
 ## Project Specific
  
-npm install --production
+npm install
 
