@@ -17,6 +17,7 @@ npm install -g jade
 npm install -g handlebars
 npm install -g browserify
 
+brew update && brew install phantomjs
 
 ## Project Specific
  
