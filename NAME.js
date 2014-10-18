@@ -10,12 +10,12 @@ var path = require('path');
 var less = require('less-middleware');
 var hb = require('express3-handlebars');
 
+
 var app = express();
 var config = require('./config/env.json')[app.get('env')];
 
 // setup ========================
 
-app.use(express.favicon());
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
